@@ -15,7 +15,7 @@ paths:
   /factory-reset:
     post:
       tags:
-        - Factory Reset
+        - factory reset
       summary: Reset Data | For testing purpose only
       operationId: FactoryReset
       responses:
