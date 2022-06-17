@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   title: Job Nuts API Docs
-  description: API documentation for the upcoming project "Job Nuts - Finding the right Job is Nuts. Let us help you with Job Notes"
+  description: API documentation for the upcoming project "Job Nuts - Finding the right Job is Nuts. Let us help you with Job Notes."
   version: "1.0"
 externalDocs:
   description: GitHub Repository
-  url: "http://swagger.io"
+  url: https://github.com/fuadinadhif/job-nuts
 servers:
   - url: https://job-nuts-api-docs.herokuapp.com/api/v1
 paths:
