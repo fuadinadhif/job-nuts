@@ -1,4 +1,4 @@
-# Commonly Used e-Commerce REST API
+# Job Nuts
 
 Full API documentation hosted on https://job-nuts-api-docs.herokuapp.com/
 
