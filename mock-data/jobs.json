@@ -1,0 +1,44 @@
+[
+  {
+    "company": "Twitter",
+    "position": "Front End Developer",
+    "status": "accepted",
+    "createdBy": "John Doe"
+  },
+  {
+    "company": "Facebook",
+    "position": "SRE Developer",
+    "status": "pending",
+    "createdBy": "John Doe"
+  },
+  {
+    "company": "Amazon",
+    "position": "Dev Ops",
+    "status": "interview",
+    "createdBy": "John Doe"
+  },
+  {
+    "company": "Snapchat",
+    "position": "Back End Developer",
+    "status": "declined",
+    "createdBy": "John Doe"
+  },
+  {
+    "company": "Tesla",
+    "position": "Data Scientist",
+    "status": "accepted",
+    "createdBy": "Jane Doe"
+  },
+  {
+    "company": "Vercel",
+    "position": "Data Scientist",
+    "status": "interview",
+    "createdBy": "Jane Doe"
+  },
+  {
+    "company": "Zara",
+    "position": "Human Capital",
+    "status": "accepted",
+    "createdBy": "Elizabeth Rose"
+  }
+]

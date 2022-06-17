@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  title: Job Nuts API Docs
+  description: API documentation for the upcoming project "Job Nuts - Finding the right Job is Nuts. Let us help you with Job Notes"
+  version: "1.0"
+externalDocs:
+  description: GitHub Repository
+  url: "http://swagger.io"
+servers:
+  - url: https://job-nuts-api-docs.herokuapp.com/api/v1
+paths:
+  /factory-reset:
+    post:
+      tags:
+        - Factory Reset
+      summary: Reset Data | For testing purpose only
+      operationId: FactoryReset
+      responses:
+        "200":
+          description: successful operation
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register User
+      operationId: RegisterUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterUserRequest"
+            example:
+              name: John Doe
+              email: john.doe@gmail.com
+              password: thesecret
+        required: true
+      responses:
+        "200":
+          description: successful operation
+        "400":
+          description: invalid input
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login User
+      operationId: LoginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginUserRequest"
+            example:
+              email: john.doe@gmail.com
+              password: thesecret
+        required: true
+      responses:
+        "200":
+          description: successful operation
+        "401":
+          description: invalid password
+        "404":
+          description: unregistered email
+  /jobs:
+    post:
+      tags:
+        - Jobs
+      summary: Create User Job
+      operationId: CreateUserJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserJobRequest"
+            example:
+              company: Google
+              position: Product Manager
+              status: interview
+        required: true
+      responses:
+        "200":
+          description: successful operation
+        "401":
+          description: invalid authentication
+      security:
+        - bearer: []
+    get:
+      tags:
+        - Jobs
+      summary: Get All User Jobs
+      operationId: GetAllUserJobs
+      responses:
+        "200":
+          description: successful operation
+        "401":
+          description: invalid authentication
+      security:
+        - bearer: []
+  /jobs/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The job ID
+    get:
+      tags:
+        - Jobs
+      summary: Get Single User Job
+      operationId: GetSingleUserJob
+      responses:
+        "200":
+          description: successful operation
+        "401":
+          description: invalid authentication
+        "404":
+          description: job not found
+      security:
+        - bearer: []
+    patch:
+      tags:
+        - Jobs
+      summary: Update User Job
+      operationId: UpdateUserJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserJobRequest"
+            example:
+              company: Microsoft
+              position: Product Researcher
+              status: pending
+        required: true
+      responses:
+        "200":
+          description: successful operation
+        "400":
+          description: invalid input
+        "401":
+          description: invalid authentication
+        "404":
+          description: job not found
+      security:
+        - bearer: []
+    delete:
+      tags:
+        - Jobs
+      summary: Delete User Job
+      operationId: DeleteUserJob
+      responses:
+        "200":
+          description: successful operation
+        "401":
+          description: invalid authentication
+        "404":
+          description: job not found
+      security:
+        - bearer: []
+components:
+  schemas:
+    RegisterUserRequest:
+      title: Register User
+      required:
+        - name
+        - email
+        - password
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 30
+        email:
+          type: string
+        password:
+          type: string
+          minLength: 6
+      example:
+        name: John Doe
+        email: john.doe@gmail.com
+        password: thesecret
+    LoginUserRequest:
+      title: Login User
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: john.doek@gmail.com
+        password: thesecret
+    CreateUserJobRequest:
+      title: Create User Job
+      required:
+        - company
+        - position
+        - status
+      type: object
+      properties:
+        company:
+          type: string
+        position:
+          type: string
+        status:
+          type: string
+          enum:
+            - pending
+            - interview
+            - declined
+            - accepted
+      example:
+        company: Apple
+        position: UX Researcher
+        status: pending
+    UpdateUserJobRequest:
+      title: Update User Job
+      required:
+        - company
+        - position
+        - status
+      type: object
+      properties:
+        company:
+          type: string
+        position:
+          type: string
+        status:
+          type: string
+          enum:
+            - pending
+            - interview
+            - declined
+            - accepted
+      example:
+        company: Apple
+        position: UX Researcher
+        status: accepted
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+  - name: Factory Reset
+    description: Erase all of the collections data and replace it with the default mock data
+    externalDocs:
+      description: Mock data preview
+      url: https://job-nuts-api-docs.herokuapp.com/api/v1/mock-data
+  - name: Auth
+    description: Authentication operations
+  - name: Job
+    description: Operations about job
