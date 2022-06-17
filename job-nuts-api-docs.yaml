@@ -1,7 +1,10 @@
 openapi: 3.0.0
 info:
   title: Job Nuts API Docs
-  description: API documentation for the upcoming project "Job Nuts - Finding the right Job is Nuts. Let us help you with Job Notes."
+  description: |
+    API documentation for the upcoming project 
+    **Job Nuts - Finding the right Job is Nuts. Let us help you with Job Notes.**
+    ---
   version: "1.0"
 externalDocs:
   description: GitHub Repository
@@ -21,7 +24,7 @@ paths:
   /auth/register:
     post:
       tags:
-        - Auth
+        - auth
       summary: Register User
       operationId: RegisterUser
       requestBody:
@@ -42,7 +45,7 @@ paths:
   /auth/login:
     post:
       tags:
-        - Auth
+        - auth
       summary: Login User
       operationId: LoginUser
       requestBody:
@@ -64,7 +67,7 @@ paths:
   /jobs:
     post:
       tags:
-        - Jobs
+        - job
       summary: Create User Job
       operationId: CreateUserJob
       requestBody:
@@ -86,7 +89,7 @@ paths:
         - bearer: []
     get:
       tags:
-        - Jobs
+        - job
       summary: Get All User Jobs
       operationId: GetAllUserJobs
       responses:
@@ -106,7 +109,7 @@ paths:
         description: The job ID
     get:
       tags:
-        - Jobs
+        - job
       summary: Get Single User Job
       operationId: GetSingleUserJob
       responses:
@@ -120,7 +123,7 @@ paths:
         - bearer: []
     patch:
       tags:
-        - Jobs
+        - job
       summary: Update User Job
       operationId: UpdateUserJob
       requestBody:
@@ -146,7 +149,7 @@ paths:
         - bearer: []
     delete:
       tags:
-        - Jobs
+        - job
       summary: Delete User Job
       operationId: DeleteUserJob
       responses:
@@ -247,12 +250,12 @@ components:
       scheme: bearer
 security: []
 tags:
-  - name: Factory Reset
+  - name: factory reset
     description: Erase all of the collections data and replace it with the default mock data
     externalDocs:
       description: Mock data preview
       url: https://job-nuts-api-docs.herokuapp.com/api/v1/mock-data
-  - name: Auth
+  - name: auth
     description: Authentication operations
-  - name: Job
+  - name: job
     description: Operations about job
